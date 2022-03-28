@@ -59,8 +59,8 @@ module.exports = function Game() {
         places[this.howManyPlayers()] = 0;
         purses[this.howManyPlayers()] = 0;
         inPenaltyBox[this.howManyPlayers()] = false;
-        players.push(playerName);
 
+        players.push(playerName);
         console.log(playerName + " was added");
         console.log("They are player number " + players.length);
 

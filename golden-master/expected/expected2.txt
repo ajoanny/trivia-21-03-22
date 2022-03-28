@@ -1,0 +1,68 @@
+Arthur was added
+They are player number 1
+Karam was added
+They are player number 2
+Jérémie was added
+They are player number 3
+Clément was added
+They are player number 4
+Arthur is the current player
+They have rolled a 1
+Arthur's new location is 1
+The category is Science
+Science Question 0
+Question was incorrectly answered
+Arthur was sent to the penalty box
+Karam is the current player
+They have rolled a 1
+Karam's new location is 1
+The category is Science
+Science Question 1
+Answer was corrent!!!!
+Karam now has 1 Gold Coins.
+Jérémie is the current player
+They have rolled a 1
+Jérémie's new location is 1
+The category is Science
+Science Question 2
+Answer was corrent!!!!
+Jérémie now has 1 Gold Coins.
+Clément is the current player
+They have rolled a 1
+Clément's new location is 1
+The category is Science
+Science Question 3
+Answer was corrent!!!!
+Clément now has 1 Gold Coins.
+Arthur is the current player
+They have rolled a 2
+Arthur is not getting out of the penalty box
+Arthur is the current player
+They have rolled a 1
+Arthur is getting out of the penalty box
+Arthur's new location is 2
+The category is Sports
+Sports Question 0
+Answer was correct!!!!
+Arthur now has 1 Gold Coins.
+Karam is the current player
+They have rolled a 1
+Karam's new location is 2
+The category is Sports
+Sports Question 1
+Answer was corrent!!!!
+Karam now has 2 Gold Coins.
+Jérémie is the current player
+They have rolled a 1
+Jérémie's new location is 2
+The category is Sports
+Sports Question 2
+Answer was corrent!!!!
+Jérémie now has 2 Gold Coins.
+Clément is the current player
+They have rolled a 1
+Clément's new location is 2
+The category is Sports
+Sports Question 3
+Answer was corrent!!!!
+Clément now has 2 Gold Coins.

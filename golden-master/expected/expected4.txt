@@ -1,0 +1,48 @@
+Karam was added
+They are player number 1
+Jérémie was added
+They are player number 2
+Quentin was added
+They are player number 3
+Karam is the current player
+They have rolled a 6
+Karam's new location is 6
+The category is Sports
+Sports Question 0
+Question was incorrectly answered
+Karam was sent to the penalty box
+Jérémie is the current player
+They have rolled a 6
+Jérémie's new location is 6
+The category is Sports
+Sports Question 1
+Question was incorrectly answered
+Jérémie was sent to the penalty box
+Quentin is the current player
+They have rolled a 6
+Quentin's new location is 6
+The category is Sports
+Sports Question 2
+Question was incorrectly answered
+Quentin was sent to the penalty box
+Karam is the current player
+They have rolled a 2
+Karam is not getting out of the penalty box
+Question was incorrectly answered
+Karam was sent to the penalty box
+Jérémie is the current player
+They have rolled a 2
+Jérémie is not getting out of the penalty box
+Question was incorrectly answered
+Jérémie was sent to the penalty box
+Quentin is the current player
+They have rolled a 2
+Quentin is not getting out of the penalty box
+Karam is the current player
+They have rolled a 3
+Karam is getting out of the penalty box
+Karam's new location is 9
+The category is Science
+Science Question 0
+Answer was correct!!!!
+Karam now has 1 Gold Coins.
