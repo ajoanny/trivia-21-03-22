@@ -142,7 +142,7 @@ module.exports = function Game() {
 
         }else{
 
-            console.log("Answer was corrent!!!!");
+            console.log("Answer was correct!!!!");
 
             purses[currentPlayer] += 1;
             console.log(players[currentPlayer] + " now has " +

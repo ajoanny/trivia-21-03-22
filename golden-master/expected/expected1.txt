@@ -11,147 +11,147 @@ They have rolled a 1
 Arthur's new location is 1
 The category is Science
 Science Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 1 Gold Coins.
 Karam is the current player
 They have rolled a 1
 Karam's new location is 1
 The category is Science
 Science Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 1 Gold Coins.
 Jérémie is the current player
 They have rolled a 1
 Jérémie's new location is 1
 The category is Science
 Science Question 2
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 1 Gold Coins.
 Clément is the current player
 They have rolled a 1
 Clément's new location is 1
 The category is Science
 Science Question 3
-Answer was corrent!!!!
+Answer was correct!!!!
 Clément now has 1 Gold Coins.
 Arthur is the current player
 They have rolled a 1
 Arthur's new location is 2
 The category is Sports
 Sports Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 2 Gold Coins.
 Karam is the current player
 They have rolled a 1
 Karam's new location is 2
 The category is Sports
 Sports Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 2 Gold Coins.
 Jérémie is the current player
 They have rolled a 1
 Jérémie's new location is 2
 The category is Sports
 Sports Question 2
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 2 Gold Coins.
 Clément is the current player
 They have rolled a 1
 Clément's new location is 2
 The category is Sports
 Sports Question 3
-Answer was corrent!!!!
+Answer was correct!!!!
 Clément now has 2 Gold Coins.
 Arthur is the current player
 They have rolled a 1
 Arthur's new location is 3
 The category is Rock
 Rock Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 3 Gold Coins.
 Karam is the current player
 They have rolled a 1
 Karam's new location is 3
 The category is Rock
 Rock Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 3 Gold Coins.
 Jérémie is the current player
 They have rolled a 1
 Jérémie's new location is 3
 The category is Rock
 Rock Question 2
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 3 Gold Coins.
 Clément is the current player
 They have rolled a 1
 Clément's new location is 3
 The category is Rock
 Rock Question 3
-Answer was corrent!!!!
+Answer was correct!!!!
 Clément now has 3 Gold Coins.
 Arthur is the current player
 They have rolled a 1
 Arthur's new location is 4
 The category is Pop
 Pop Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 4 Gold Coins.
 Karam is the current player
 They have rolled a 1
 Karam's new location is 4
 The category is Pop
 Pop Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 4 Gold Coins.
 Jérémie is the current player
 They have rolled a 1
 Jérémie's new location is 4
 The category is Pop
 Pop Question 2
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 4 Gold Coins.
 Clément is the current player
 They have rolled a 1
 Clément's new location is 4
 The category is Pop
 Pop Question 3
-Answer was corrent!!!!
+Answer was correct!!!!
 Clément now has 4 Gold Coins.
 Arthur is the current player
 They have rolled a 1
 Arthur's new location is 5
 The category is Science
 Science Question 4
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 5 Gold Coins.
 Karam is the current player
 They have rolled a 1
 Karam's new location is 5
 The category is Science
 Science Question 5
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 5 Gold Coins.
 Jérémie is the current player
 They have rolled a 1
 Jérémie's new location is 5
 The category is Science
 Science Question 6
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 5 Gold Coins.
 Clément is the current player
 They have rolled a 1
 Clément's new location is 5
 The category is Science
 Science Question 7
-Answer was corrent!!!!
+Answer was correct!!!!
 Clément now has 5 Gold Coins.
 Arthur is the current player
 They have rolled a 1
 Arthur's new location is 6
 The category is Sports
 Sports Question 4
-Answer was corrent!!!!
+Answer was correct!!!!
 Arthur now has 6 Gold Coins.
 Game ended
 Karam is the current player
@@ -159,6 +159,6 @@ They have rolled a 1
 Karam's new location is 6
 The category is Sports
 Sports Question 5
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 6 Gold Coins.
 Game ended

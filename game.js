@@ -110,41 +110,16 @@ module.exports = function Game() {
     };
 
     this.wasCorrectlyAnswered = function(){
-        if(inPenaltyBox[currentPlayer]){
-            if(isGettingOutOfPenaltyBox){
+            if(isGettingOutOfPenaltyBox || !inPenaltyBox[currentPlayer]){
                 console.log('Answer was correct!!!!');
                 purses[currentPlayer] += 1;
                 console.log(players[currentPlayer] + " now has " +
                     purses[currentPlayer]  + " Gold Coins.");
-
-                var winner = didPlayerWin();
-                currentPlayer += 1;
-                if(currentPlayer == players.length)
-                    currentPlayer = 0;
-
-                return winner;
-            }else{
-                currentPlayer += 1;
-                if(currentPlayer == players.length)
-                    currentPlayer = 0;
-                return true;
             }
-        }else{
 
-            console.log("Answer was corrent!!!!");
-
-            purses[currentPlayer] += 1;
-            console.log(players[currentPlayer] + " now has " +
-                purses[currentPlayer]  + " Gold Coins.");
-
-            var winner = didPlayerWin();
-
-            currentPlayer += 1;
-            if(currentPlayer == players.length)
-                currentPlayer = 0;
-
-            return winner;
-        }
+        var winner = didPlayerWin();
+        this.nextPlayer();
+        return winner;
     };
 
     this.wrongAnswer = function(){
@@ -152,11 +127,15 @@ module.exports = function Game() {
         console.log(players[currentPlayer] + " was sent to the penalty box");
         inPenaltyBox[currentPlayer] = true;
 
-        currentPlayer += 1;
-        if(currentPlayer == players.length)
-            currentPlayer = 0;
+        this.nextPlayer();
         return true;
     };
+
+    this.nextPlayer = function() {
+        currentPlayer += 1;
+        if(currentPlayer == players.length)
+        currentPlayer = 0;
+    }
 };
 
 

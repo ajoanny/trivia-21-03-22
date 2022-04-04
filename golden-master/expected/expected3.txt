@@ -9,33 +9,33 @@ They have rolled a 6
 Karam's new location is 6
 The category is Sports
 Sports Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 1 Gold Coins.
 Jérémie is the current player
 They have rolled a 6
 Jérémie's new location is 6
 The category is Sports
 Sports Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 1 Gold Coins.
 Quentin is the current player
 They have rolled a 6
 Quentin's new location is 6
 The category is Sports
 Sports Question 2
-Answer was corrent!!!!
+Answer was correct!!!!
 Quentin now has 1 Gold Coins.
 Karam is the current player
 They have rolled a 6
 Karam's new location is 0
 The category is Pop
 Pop Question 0
-Answer was corrent!!!!
+Answer was correct!!!!
 Karam now has 2 Gold Coins.
 Jérémie is the current player
 They have rolled a 6
 Jérémie's new location is 0
 The category is Pop
 Pop Question 1
-Answer was corrent!!!!
+Answer was correct!!!!
 Jérémie now has 2 Gold Coins.
