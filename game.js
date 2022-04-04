@@ -87,34 +87,26 @@ module.exports = function Game() {
         console.log(players[currentPlayer] + " is the current player");
         console.log("They have rolled a " + roll);
 
-        if(inPenaltyBox[currentPlayer]){
-            if(roll % 2 != 0){
-                isGettingOutOfPenaltyBox = true;
-
-                console.log(players[currentPlayer] + " is getting out of the penalty box");
-                places[currentPlayer] = places[currentPlayer] + roll;
-                if(places[currentPlayer] > 11){
-                    places[currentPlayer] = places[currentPlayer] - 12;
-                }
-
-                console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
-                console.log("The category is " + currentCategory());
-                askQuestion();
-            }else{
-                console.log(players[currentPlayer] + " is not getting out of the penalty box");
-                isGettingOutOfPenaltyBox = false;
-            }
-        }else{
-
-            places[currentPlayer] = places[currentPlayer] + roll;
-            if(places[currentPlayer] > 11){
-                places[currentPlayer] = places[currentPlayer] - 12;
-            }
-
-            console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
-            console.log("The category is " + currentCategory());
-            askQuestion();
+        if(inPenaltyBox[currentPlayer] && (roll % 2 == 0)) {
+            console.log(players[currentPlayer] + " is not getting out of the penalty box");
+            isGettingOutOfPenaltyBox = false;
+            return;
         }
+
+        if(roll % 2 == 1 && inPenaltyBox[currentPlayer]) {
+            isGettingOutOfPenaltyBox = true;
+
+            console.log(players[currentPlayer] + " is getting out of the penalty box");
+        }
+
+        places[currentPlayer] = places[currentPlayer] + roll;
+        if(places[currentPlayer] > 11){
+            places[currentPlayer] = places[currentPlayer] - 12;
+        }
+
+        console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
+        console.log("The category is " + currentCategory());
+        askQuestion();
     };
 
     this.wasCorrectlyAnswered = function(){
@@ -137,9 +129,6 @@ module.exports = function Game() {
                     currentPlayer = 0;
                 return true;
             }
-
-
-
         }else{
 
             console.log("Answer was corrent!!!!");
