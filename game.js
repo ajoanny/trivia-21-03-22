@@ -71,43 +71,59 @@ module.exports = function Game() {
         return players.length;
     };
 
-
-    var askQuestion = function(){
-        if(currentCategory() == 'Pop')
-            console.log(popQuestions.shift());
-        if(currentCategory() == 'Science')
-            console.log(scienceQuestions.shift());
-        if(currentCategory() == 'Sports')
-            console.log(sportsQuestions.shift());
-        if(currentCategory() == 'Rock')
-            console.log(rockQuestions.shift());
-    };
-
-    this.roll = function(roll){
-        console.log(players[currentPlayer] + " is the current player");
+    this.roll = function(r){
+       const { player, place, inPrison, category, question, roll } =  _roll(r)
+        
+        console.log( player + " is the current player");
         console.log("They have rolled a " + roll);
 
-        if(inPenaltyBox[currentPlayer] && (roll % 2 == 0)) {
-            console.log(players[currentPlayer] + " is not getting out of the penalty box");
-            isGettingOutOfPenaltyBox = false;
-            return;
+        if(inPrison && !isGettingOutOfPenaltyBox) {
+            console.log( player + " is not getting out of the penalty box");
         }
 
-        if(roll % 2 == 1 && inPenaltyBox[currentPlayer]) {
-            isGettingOutOfPenaltyBox = true;
-
-            console.log(players[currentPlayer] + " is getting out of the penalty box");
+        if(isGettingOutOfPenaltyBox && inPrison) {
+            console.log( player + " is getting out of the penalty box");
         }
 
-        places[currentPlayer] = places[currentPlayer] + roll;
-        if(places[currentPlayer] > 11){
-            places[currentPlayer] = places[currentPlayer] - 12;
+        if(category){
+            console.log( player + "'s new location is " + place);
+            console.log("The category is " + category);
+            console.log(question);
         }
-
-        console.log(players[currentPlayer] + "'s new location is " + places[currentPlayer]);
-        console.log("The category is " + currentCategory());
-        askQuestion();
     };
+
+    _roll = function(roll){
+        let category;
+        let question;
+        const player = players[currentPlayer];
+        let place = places[currentPlayer];
+        const inPrison = inPenaltyBox[currentPlayer]
+
+        if(inPrison && (roll % 2 == 0)) {
+            isGettingOutOfPenaltyBox = false;
+        } else {
+            if(roll % 2 == 1 && inPrison) {
+                isGettingOutOfPenaltyBox = true;
+            }
+    
+            place = place + roll;
+            if(place > 11){
+                place = place - 12;
+            }
+            places[currentPlayer] = place;
+            category = currentCategory();
+        }
+
+        if(category == 'Pop')
+                question = popQuestions.shift();
+            if(category == 'Science')
+                question = scienceQuestions.shift();
+            if(category == 'Sports')
+                question = sportsQuestions.shift();
+            if(category == 'Rock')
+                question = rockQuestions.shift();
+        return { player, place, inPrison, category, question, roll };
+    }
 
     this.wasCorrectlyAnswered = function(){
             if(isGettingOutOfPenaltyBox || !inPenaltyBox[currentPlayer]){
