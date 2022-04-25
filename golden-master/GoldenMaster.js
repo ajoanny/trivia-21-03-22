@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const Game = require("../game");
+const Game = require("../application/cli");
 
 function clearFile(filename) {
   if (fs.existsSync(filename)) fs.unlinkSync(filename);

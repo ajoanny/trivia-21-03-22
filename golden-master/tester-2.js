@@ -1,4 +1,4 @@
-const Game = require('../game');
+const Game = require('../application/cli');
 
 const game = new Game();
 

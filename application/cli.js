@@ -1,6 +1,6 @@
 exports = typeof window !== "undefined" && window !== null ? window : global;
 
-module.exports = function Game() {
+module.exports = function Cli() {
     var players          = new Array();
     var places           = new Array(6);
     var purses           = new Array(6);
@@ -73,7 +73,7 @@ module.exports = function Game() {
 
     this.roll = function(r){
        const { player, place, inPrison, category, question, roll } =  _roll(r)
-        
+
         console.log( player + " is the current player");
         console.log("They have rolled a " + roll);
 
@@ -105,7 +105,7 @@ module.exports = function Game() {
             if(roll % 2 == 1 && inPrison) {
                 isGettingOutOfPenaltyBox = true;
             }
-    
+
             place = place + roll;
             if(place > 11){
                 place = place - 12;
@@ -126,26 +126,44 @@ module.exports = function Game() {
     }
 
     this.wasCorrectlyAnswered = function(){
-            if(isGettingOutOfPenaltyBox || !inPenaltyBox[currentPlayer]){
-                console.log('Answer was correct!!!!');
-                purses[currentPlayer] += 1;
-                console.log(players[currentPlayer] + " now has " +
-                    purses[currentPlayer]  + " Gold Coins.");
-            }
+        const {canWinCoin, purse, player, winner} = this._wasCorrectlyAnswered();
 
-        var winner = didPlayerWin();
-        this.nextPlayer();
+        if(canWinCoin){
+            console.log('Answer was correct!!!!');
+            console.log(player + " now has " +
+                purse  + " Gold Coins.");
+        }
+
         return winner;
     };
 
-    this.wrongAnswer = function(){
-        console.log('Question was incorrectly answered');
-        console.log(players[currentPlayer] + " was sent to the penalty box");
-        inPenaltyBox[currentPlayer] = true;
+    this._wasCorrectlyAnswered = function(){
+        const canWinCoin = isGettingOutOfPenaltyBox || !inPenaltyBox[currentPlayer];
+        const player = players[currentPlayer];
+        if(canWinCoin){
+            purses[currentPlayer] += 1;
+        }
+        const purse = purses[currentPlayer];
 
+        const winner = didPlayerWin();
         this.nextPlayer();
+
+        return {canWinCoin, purse, player, winner};
+    }
+
+    this.wrongAnswer = function(){
+        const player = this._wasIncorrectlyAnswered();
+        console.log('Question was incorrectly answered');
+        console.log(player + " was sent to the penalty box");
         return true;
     };
+
+    this._wasIncorrectlyAnswered = function (){
+        inPenaltyBox[currentPlayer] = true;
+        const player = players[currentPlayer];
+        this.nextPlayer();
+        return player;
+    }
 
     this.nextPlayer = function() {
         currentPlayer += 1;

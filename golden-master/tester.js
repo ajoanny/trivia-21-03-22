@@ -1,16 +1,16 @@
-const Game = require('../game');
+const Cli = require('../application/cli');
 
-const game = new Game();
+const cli = new Cli();
 
-game.add('Arthur');
-game.add('Karam');
-game.add('Jérémie');
-game.add('Clément');
+cli.add('Arthur');
+cli.add('Karam');
+cli.add('Jérémie');
+cli.add('Clément');
 
 let notAWinner = false;
 for (let i = 0; i <= 21; i++) {
-    game.roll(1);
-    notAWinner = game.wasCorrectlyAnswered();
+    cli.roll(1);
+    notAWinner = cli.wasCorrectlyAnswered();
 
     if (!notAWinner) {
         console.log('Game ended');
