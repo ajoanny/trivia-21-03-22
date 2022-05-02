@@ -1,44 +1,14 @@
 exports = typeof window !== "undefined" && window !== null ? window : global;
+const Game = require("../domain/model/game")
 
 module.exports = function Cli() {
-    var players          = new Array();
-    var places           = new Array(6);
-    var purses           = new Array(6);
-    var inPenaltyBox     = new Array(6);
-
     var popQuestions     = new Array();
     var scienceQuestions = new Array();
     var sportsQuestions  = new Array();
     var rockQuestions    = new Array();
 
-    var currentPlayer    = 0;
-    var isGettingOutOfPenaltyBox = false;
+    const game = new Game({ popQuestions, scienceQuestions, sportsQuestions, rockQuestions });
 
-    var didPlayerWin = function(){
-        return !(purses[currentPlayer] == 6)
-    };
-
-    var currentCategory = function(){
-        if(places[currentPlayer] == 0)
-            return 'Pop';
-        if(places[currentPlayer] == 4)
-            return 'Pop';
-        if(places[currentPlayer] == 8)
-            return 'Pop';
-        if(places[currentPlayer] == 1)
-            return 'Science';
-        if(places[currentPlayer] == 5)
-            return 'Science';
-        if(places[currentPlayer] == 9)
-            return 'Science';
-        if(places[currentPlayer] == 2)
-            return 'Sports';
-        if(places[currentPlayer] == 6)
-            return 'Sports';
-        if(places[currentPlayer] == 10)
-            return 'Sports';
-        return 'Rock';
-    };
 
     this.createRockQuestion = function(index){
         return "Rock Question "+index;
@@ -51,28 +21,22 @@ module.exports = function Cli() {
         rockQuestions.push(this.createRockQuestion(i));
     };
 
-    this.isPlayable = function(howManyPlayers){
-        return howManyPlayers >= 2;
-    };
-
     this.add = function(playerName){
-        places[this.howManyPlayers()] = 0;
-        purses[this.howManyPlayers()] = 0;
-        inPenaltyBox[this.howManyPlayers()] = false;
-        players.push(playerName);
+        const { playerName : name, playersCount } = _add(playerName)
 
-        console.log(playerName + " was added");
-        console.log("They are player number " + players.length);
+        console.log(name + " was added");
+        console.log("They are player number " + playersCount);
 
         return true;
     };
 
-    this.howManyPlayers = function(){
-        return players.length;
-    };
+    _add = function(playerName) {
+        return game.add(playerName);
+    }
+
 
     this.roll = function(r){
-       const { player, place, inPrison, category, question, roll } =  _roll(r)
+       const { player, place, inPrison, category, question, roll, isGettingOutOfPenaltyBox } =  _roll(r)
 
         console.log( player + " is the current player");
         console.log("They have rolled a " + roll);
@@ -92,41 +56,12 @@ module.exports = function Cli() {
         }
     };
 
-    _roll = function(roll){
-        let category;
-        let question;
-        const player = players[currentPlayer];
-        let place = places[currentPlayer];
-        const inPrison = inPenaltyBox[currentPlayer]
-
-        if(inPrison && (roll % 2 == 0)) {
-            isGettingOutOfPenaltyBox = false;
-        } else {
-            if(roll % 2 == 1 && inPrison) {
-                isGettingOutOfPenaltyBox = true;
-            }
-
-            place = place + roll;
-            if(place > 11){
-                place = place - 12;
-            }
-            places[currentPlayer] = place;
-            category = currentCategory();
-        }
-
-        if(category == 'Pop')
-                question = popQuestions.shift();
-            if(category == 'Science')
-                question = scienceQuestions.shift();
-            if(category == 'Sports')
-                question = sportsQuestions.shift();
-            if(category == 'Rock')
-                question = rockQuestions.shift();
-        return { player, place, inPrison, category, question, roll };
+    _roll = function(dice){
+        return game.roll(dice)
     }
 
     this.wasCorrectlyAnswered = function(){
-        const {canWinCoin, purse, player, winner} = this._wasCorrectlyAnswered();
+        const {canWinCoin, purse, player, winner} = _wasCorrectlyAnswered();
 
         if(canWinCoin){
             console.log('Answer was correct!!!!');
@@ -137,39 +72,21 @@ module.exports = function Cli() {
         return winner;
     };
 
-    this._wasCorrectlyAnswered = function(){
-        const canWinCoin = isGettingOutOfPenaltyBox || !inPenaltyBox[currentPlayer];
-        const player = players[currentPlayer];
-        if(canWinCoin){
-            purses[currentPlayer] += 1;
-        }
-        const purse = purses[currentPlayer];
-
-        const winner = didPlayerWin();
-        this.nextPlayer();
-
-        return {canWinCoin, purse, player, winner};
+    _wasCorrectlyAnswered = function(){
+        return game.wasCorrectlyAnswered()
     }
 
     this.wrongAnswer = function(){
-        const player = this._wasIncorrectlyAnswered();
+        const player = _wasIncorrectlyAnswered();
         console.log('Question was incorrectly answered');
         console.log(player + " was sent to the penalty box");
         return true;
     };
 
-    this._wasIncorrectlyAnswered = function (){
-        inPenaltyBox[currentPlayer] = true;
-        const player = players[currentPlayer];
-        this.nextPlayer();
-        return player;
+    _wasIncorrectlyAnswered = function (){
+        return game.wasIncorrectlyAnswered()
     }
 
-    this.nextPlayer = function() {
-        currentPlayer += 1;
-        if(currentPlayer == players.length)
-        currentPlayer = 0;
-    }
 };
 
 
