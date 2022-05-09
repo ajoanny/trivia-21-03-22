@@ -7,32 +7,32 @@ game.add('Jérémie');
 game.add('Quentin');
 
 //K
-game.roll(6);
-game.wrongAnswer();
+game.play(6);
+game.answerIncorrectly();
 
 //J
-game.roll(6);
-game.wrongAnswer();
+game.play(6);
+game.answerIncorrectly();
 
 //Q
-game.roll(6);
-game.wrongAnswer();
+game.play(6);
+game.answerIncorrectly();
 
 //K
-game.roll(2);
-game.wrongAnswer();
+game.play(2);
+game.answerIncorrectly();
 
 //J
-game.roll(2);
-game.wrongAnswer();
+game.play(2);
+game.answerIncorrectly();
 
 //Q
-game.roll(2);
-game.wasCorrectlyAnswered();
+game.play(2);
+game.answerCorrectly();
 
 //K
-game.roll(3);
-game.wasCorrectlyAnswered();
+game.play(3);
+game.answerCorrectly();
 
 module.exports = {
 

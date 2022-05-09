@@ -1,5 +1,14 @@
 exports = typeof window !== "undefined" && window !== null ? window : global;
 const Game = require("../domain/model/game")
+const GameRepository = require('../infrastructure/repositories/game-repository');
+const play = require('../domain/usecases/play-usecase');
+const answerCorrectly = require('../domain/usecases/correctly-answered-usecase');
+const answerIncorrectly = require('../domain/usecases/incorrectly-answered-usecase');
+const addPlayer = require('../domain/usecases/add-player-usecase');
+const addPlayerPresenter = require('../application/presenter/add-player-presenter');
+const playPresenter = require('../application/presenter/play-presenter');
+const answerCorrectlyPresenter = require('../application/presenter/correctly-answered-presenter')
+const answerIncorrectlyPresenter = require('../application/presenter/incorrectly-answered-presenter')
 
 module.exports = function Cli() {
     var popQuestions     = new Array();
@@ -7,8 +16,9 @@ module.exports = function Cli() {
     var sportsQuestions  = new Array();
     var rockQuestions    = new Array();
 
+    const gameRepository = new GameRepository();
     const game = new Game({ popQuestions, scienceQuestions, sportsQuestions, rockQuestions });
-
+    gameRepository.saveGame(game);
 
     this.createRockQuestion = function(index){
         return "Rock Question "+index;
@@ -22,71 +32,31 @@ module.exports = function Cli() {
     };
 
     this.add = function(playerName){
-        const { playerName : name, playersCount } = _add(playerName)
+        const state = addPlayer(playerName, gameRepository)
 
-        console.log(name + " was added");
-        console.log("They are player number " + playersCount);
+        addPlayerPresenter(state);
 
         return true;
     };
 
-    _add = function(playerName) {
-        return game.add(playerName);
-    }
-
-
-    this.roll = function(r){
-       const { player, place, inPrison, category, question, roll, isGettingOutOfPenaltyBox } =  _roll(r)
-
-        console.log( player + " is the current player");
-        console.log("They have rolled a " + roll);
-
-        if(inPrison && !isGettingOutOfPenaltyBox) {
-            console.log( player + " is not getting out of the penalty box");
-        }
-
-        if(isGettingOutOfPenaltyBox && inPrison) {
-            console.log( player + " is getting out of the penalty box");
-        }
-
-        if(category){
-            console.log( player + "'s new location is " + place);
-            console.log("The category is " + category);
-            console.log(question);
-        }
+    this.play = function(r){
+       const state = play(r, gameRepository);
+       playPresenter(state);
     };
 
-    _roll = function(dice){
-        return game.roll(dice)
-    }
+    this.answerCorrectly = function(){
+        const state = answerCorrectly(gameRepository);
 
-    this.wasCorrectlyAnswered = function(){
-        const {canWinCoin, purse, player, winner} = _wasCorrectlyAnswered();
+        answerCorrectlyPresenter(state);
 
-        if(canWinCoin){
-            console.log('Answer was correct!!!!');
-            console.log(player + " now has " +
-                purse  + " Gold Coins.");
-        }
-
-        return winner;
+        return state.winner;
     };
 
-    _wasCorrectlyAnswered = function(){
-        return game.wasCorrectlyAnswered()
-    }
-
-    this.wrongAnswer = function(){
-        const player = _wasIncorrectlyAnswered();
-        console.log('Question was incorrectly answered');
-        console.log(player + " was sent to the penalty box");
+    this.answerIncorrectly = function(){
+        const player = answerIncorrectly(gameRepository);
+        answerIncorrectlyPresenter(player)
         return true;
     };
-
-    _wasIncorrectlyAnswered = function (){
-        return game.wasIncorrectlyAnswered()
-    }
-
 };
 
 

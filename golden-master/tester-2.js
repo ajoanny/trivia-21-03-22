@@ -10,38 +10,38 @@ game.add('Clément');
 // TOUR 1
 
 // Arthur
-game.roll(1);
-game.wrongAnswer();
+game.play(1);
+game.answerIncorrectly();
 
 // Karam
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // Jérémie
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // Clément
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // TOUR 2
 
 // Arthur ne sort pas de prison
-game.roll(2);
+game.play(2);
 
 // Arthur sort de prison
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // Karam
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // Jérémie
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();
 
 // Clément
-game.roll(1);
-game.wasCorrectlyAnswered();
+game.play(1);
+game.answerCorrectly();

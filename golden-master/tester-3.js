@@ -7,17 +7,17 @@ game.add('Jérémie');
 game.add('Quentin');
 
 
-game.roll(6);
-game.wasCorrectlyAnswered();
+game.play(6);
+game.answerCorrectly();
 
-game.roll(6);
-game.wasCorrectlyAnswered();
+game.play(6);
+game.answerCorrectly();
 
-game.roll(6);
-game.wasCorrectlyAnswered();
+game.play(6);
+game.answerCorrectly();
 
-game.roll(6);
-game.wasCorrectlyAnswered();
+game.play(6);
+game.answerCorrectly();
 
-game.roll(6);
-game.wasCorrectlyAnswered();
+game.play(6);
+game.answerCorrectly();
