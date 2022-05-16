@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const Game = require("../../domain/model/game")
 
 class GameFileRepository {
     getGame() {
@@ -22,7 +23,7 @@ class GameFileRepository {
             inPenaltyBoxes.push(inPenaltyBox);
         });
 
-        console.log(players, places, purses, inPenaltyBoxes);
+      return new Game({currentPlayerIndex, players, places, purses, inPenaltyBoxes});
     }
 }
 
