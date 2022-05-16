@@ -13,6 +13,22 @@ class Game {
       this.currentPlayer    = 0;
       this.isGettingOutOfPenaltyBox = false;
   }
+
+  build (params) {
+        this.players          = params.players;
+        this.places           = params.places;
+        this.purses           = params.purses;
+        this.inPenaltyBox     = params.inPenaltyBox;
+
+        this.popQuestions     = params.popQuestions;
+        this.scienceQuestions = params.scienceQuestions;
+        this.sportsQuestions  = params.sportsQuestions;
+        this.rockQuestions    = params.rockQuestions;
+
+        this.currentPlayer    = params.currentPlayerIndex;
+        this.isGettingOutOfPenaltyBox = false;
+  }
+
   roll (roll){
       let category;
       let question;
