@@ -1,4 +1,6 @@
 module.exports = function addPlayer(playerName, gameRepository) {
   const game = gameRepository.getGame();
-  return game.add(playerName);
+  const status =  game.add(playerName);
+  gameRepository.saveGame(game);
+  return status;
 }

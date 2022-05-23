@@ -1,3 +1,5 @@
-1
-A 2 1 false
-B 3 2 true
+3
+Arthur 2 1 true
+Karam 2 2 false
+Jérémie 2 2 false
+Clément 1 1 false

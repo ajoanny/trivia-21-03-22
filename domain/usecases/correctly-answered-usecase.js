@@ -1,4 +1,7 @@
 module.exports = function answerCorrectly(gameRepository){
   const game = gameRepository.getGame();
-  return game.wasCorrectlyAnswered();
+  const status = game.wasCorrectlyAnswered();
+  gameRepository.saveGame(game);
+
+  return status;
 }

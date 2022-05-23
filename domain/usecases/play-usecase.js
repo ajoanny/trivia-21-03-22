@@ -1,4 +1,6 @@
 module.exports = function play(dice, gameRepository) {
   const game = gameRepository.getGame();
-  return game.roll(dice)
+  const status = game.roll(dice);
+  gameRepository.saveGame(game);
+  return status;
 }

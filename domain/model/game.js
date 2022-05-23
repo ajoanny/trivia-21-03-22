@@ -14,19 +14,15 @@ class Game {
       this.isGettingOutOfPenaltyBox = false;
   }
 
-  build (params) {
-        this.players          = params.players;
-        this.places           = params.places;
-        this.purses           = params.purses;
-        this.inPenaltyBox     = params.inPenaltyBox;
-
-        this.popQuestions     = params.popQuestions;
-        this.scienceQuestions = params.scienceQuestions;
-        this.sportsQuestions  = params.sportsQuestions;
-        this.rockQuestions    = params.rockQuestions;
-
-        this.currentPlayer    = params.currentPlayerIndex;
-        this.isGettingOutOfPenaltyBox = false;
+  static build (params) {
+    const game = new Game(params)
+    game.currentPlayer    = params.currentPlayerIndex;
+    game.isGettingOutOfPenaltyBox = false;
+    game.players          = params.players;
+    game.places           = params.places;
+    game.purses           = params.purses;
+    game.inPenaltyBox     = params.inPenaltyBox;
+    return game;
   }
 
   roll (roll){
@@ -120,6 +116,24 @@ class Game {
   howManyPlayers(){
       return this.players.length;
   };
+
+  snapshot() {
+    return {
+      currentPlayer: this.currentPlayer,
+      players: this.players.map((name, index) => {
+          return {
+            name,
+            position: this.places[index],
+            purses: this.purses[index],
+            inPenaltyBox: this.inPenaltyBox[index],
+          }
+      }),
+        rock: this.rockQuestions,
+        sport: this.sportsQuestions,
+        science: this.scienceQuestions,
+        pop: this.popQuestions,
+    };
+  }
 }
 
 module.exports = Game;
