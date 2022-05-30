@@ -1,5 +1,5 @@
-3
-Arthur 2 1 true
-Karam 2 2 false
-Jérémie 2 2 false
-Clément 1 1 false
+1
+true
+Karam 9 1 true
+Jérémie 6 0 true
+Quentin 6 0 true

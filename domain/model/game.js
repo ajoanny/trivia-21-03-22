@@ -4,12 +4,12 @@ class Game {
       this.places           = new Array(6);
       this.purses           = new Array(6);
       this.inPenaltyBox     = new Array(6);
-      
+
       this.popQuestions     = params.popQuestions;
       this.scienceQuestions = params.scienceQuestions;
       this.sportsQuestions  = params.sportsQuestions;
       this.rockQuestions    = params.rockQuestions;
-      
+
       this.currentPlayer    = 0;
       this.isGettingOutOfPenaltyBox = false;
   }
@@ -17,7 +17,7 @@ class Game {
   static build (params) {
     const game = new Game(params)
     game.currentPlayer    = params.currentPlayerIndex;
-    game.isGettingOutOfPenaltyBox = false;
+    game.isGettingOutOfPenaltyBox = params.isGettingOutOfPenaltyBox;
     game.players          = params.players;
     game.places           = params.places;
     game.purses           = params.purses;
@@ -31,14 +31,14 @@ class Game {
       const player = this.players[this.currentPlayer];
       let place = this.places[this.currentPlayer];
       const inPrison = this.inPenaltyBox[this.currentPlayer]
-  
+
       if(inPrison && (roll % 2 == 0)) {
           this.isGettingOutOfPenaltyBox = false;
       } else {
           if(roll % 2 == 1 && inPrison) {
               this.isGettingOutOfPenaltyBox = true;
           }
-  
+
           place = place + roll;
           if(place > 11){
               place = place - 12;
@@ -46,7 +46,7 @@ class Game {
           this.places[this.currentPlayer] = place;
           category = this.currentCategory();
       }
-  
+
       if(category == 'Pop')
               question = this.popQuestions.shift();
           if(category == 'Science')
@@ -85,10 +85,10 @@ class Game {
           this.purses[this.currentPlayer] += 1;
       }
       const purse = this.purses[this.currentPlayer];
-  
+
       const winner = this.didPlayerWin();
       this.nextPlayer();
-      
+
       return {canWinCoin, purse, player, winner};
   }
   nextPlayer() {
@@ -120,6 +120,7 @@ class Game {
   snapshot() {
     return {
       currentPlayer: this.currentPlayer,
+      isGettingOutOfPenaltyBox: this.isGettingOutOfPenaltyBox,
       players: this.players.map((name, index) => {
           return {
             name,

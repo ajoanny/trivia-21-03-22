@@ -1,6 +1,6 @@
 exports = typeof window !== "undefined" && window !== null ? window : global;
 const Game = require("../domain/model/game")
-const GameRepository = require('../infrastructure/repositories/game-repository');
+const GameRepository = require('../infrastructure/repositories/game-file-repository');
 const play = require('../domain/usecases/play-usecase');
 const answerCorrectly = require('../domain/usecases/correctly-answered-usecase');
 const answerIncorrectly = require('../domain/usecases/incorrectly-answered-usecase');
@@ -16,20 +16,21 @@ module.exports = function Cli() {
     var sportsQuestions  = new Array();
     var rockQuestions    = new Array();
 
-    const gameRepository = new GameRepository();
-    const game = new Game({ popQuestions, scienceQuestions, sportsQuestions, rockQuestions });
-    gameRepository.saveGame(game);
-
     this.createRockQuestion = function(index){
         return "Rock Question "+index;
     };
-
     for(var i = 0; i < 50; i++){
         popQuestions.push("Pop Question "+i);
         scienceQuestions.push("Science Question "+i);
         sportsQuestions.push("Sports Question "+i);
         rockQuestions.push(this.createRockQuestion(i));
     };
+
+    const gameRepository = new GameRepository();
+    const game = new Game({ popQuestions, scienceQuestions, sportsQuestions, rockQuestions });
+    gameRepository.saveGame(game);
+
+
 
     this.add = function(playerName){
         const state = addPlayer(playerName, gameRepository)

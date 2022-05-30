@@ -34,6 +34,3 @@ game.answerCorrectly();
 game.play(3);
 game.answerCorrectly();
 
-module.exports = {
-
-}
