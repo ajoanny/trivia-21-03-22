@@ -97,7 +97,7 @@ class Game {
       this.currentPlayer = 0;
   }
   didPlayerWin(){
-      return !(this.purses[this.currentPlayer] == 6)
+      return this.purses[this.currentPlayer] == 6
   };
   wasIncorrectlyAnswered (){
       this.inPenaltyBox[this.currentPlayer] = true;

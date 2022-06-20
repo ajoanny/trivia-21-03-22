@@ -7,12 +7,12 @@ cli.add('Karam');
 cli.add('Jérémie');
 cli.add('Clément');
 
-let notAWinner = false;
+let isWinner = false;
 for (let i = 0; i <= 21; i++) {
     cli.play(1);
-    notAWinner = cli.answerCorrectly();
+    isWinner = cli.answerCorrectly();
 
-    if (!notAWinner) {
+    if (isWinner) {
         console.log('Game ended');
     }
 }
